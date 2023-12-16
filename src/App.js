@@ -1,23 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Game from "./Game.jsx";
+import { useState } from "react";
 
 function App() {
+  const base = [
+    {
+      title: "2 + 2 =",
+      answers: ["1", "2", "3", "4"],
+      correctAnswer: "4",
+    },
+    {
+      title: "2 + 3 =",
+      answers: ["1", "3", "5", "10"],
+      correctAnswer: "5",
+    },
+  ];
+
+  const [step, setStep] = useState(0);
+  const question = base[step];
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Game question={question} step={step} setStep={setStep} base={base} />
     </div>
   );
 }
